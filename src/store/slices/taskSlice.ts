@@ -1,3 +1,4 @@
+import { MOCK_TASKS } from '@bugtracker/mock/mockdata';
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type Task = {
@@ -16,7 +17,9 @@ interface TasksState {
 }
 
 const initialState: TasksState = {
-  tasks: [],
+  tasks:
+    // Mock data for tasks slice
+    MOCK_TASKS as Task[],
 };
 
 const tasksSlice = createSlice({
