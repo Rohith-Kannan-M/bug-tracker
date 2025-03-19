@@ -9,6 +9,7 @@ import {
   updateTaskStatus,
   Task,
 } from '@bugtracker/store/slices/taskSlice';
+import config from '@bugtracker/config';
 
 export default function TasksPage() {
   const router = useRouter();
@@ -36,9 +37,9 @@ export default function TasksPage() {
       description: newTask.description,
       priority: newTask.priority as Task['priority'],
       status: 'Open',
-      assignee: user?.role === 'developer' ? user.email : 'Unassigned',
+      assignee: user?.role === config.roles.developer ? user.email : 'Unassigned',
       createdAt: new Date().toISOString(),
-      timeSpent: 0,
+      timeSpent: Math.floor(Math.random() * 11),
     };
     dispatch(addTask(task));
     setNewTask({ title: '', description: '', priority: 'Low' });
